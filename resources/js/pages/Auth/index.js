@@ -6,7 +6,7 @@ const Auth = () => {
 
   return (
     <div className="flex h-screen justify-center items-center">
-      <div className="w-full mx-2 shadow-md">
+      <div className="w-full md:w-[400px] mx-2 shadow-md">
         <Tabs
           onSwitchLogin={() => setCurrentTab('login')}
           onSwitchRegister={() => setCurrentTab('register')}
