@@ -24,7 +24,7 @@ const useApp = () => {
     if (!response.ok) return;
     dispatch(setIsAuthenticated({ authenticate: true }));
     const data = await response.json();
-    dispatch(setUser(camelCaseKeys(data)));
+    dispatch(setUser({ data: camelCaseKeys(data) }));
   }
 
   return { isAuthenticated, getCurrentLoggedUser };
