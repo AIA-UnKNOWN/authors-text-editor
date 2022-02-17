@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import camelCaseKeys from 'camelcase-keys';
 import { useDispatch } from 'react-redux';
@@ -7,12 +7,19 @@ import { setUser, setIsAuthenticated } from '@reducers/userSlice';
 
 const useLogin = () => {
   const dispatch = useDispatch();
+  const abortController = new AbortController();
   const [buttonText, setButtonText] = useState('Login');
   const [input, setInput] = useState({
     username: '',
     password: ''
   });
   const [formErrors, setFormErrors] = useState({});
+
+  useEffect(() => {
+    return () => {
+      abortController.abort();
+    }
+  }, []);
 
   const login = () => {
     validate(errors => {
@@ -25,7 +32,8 @@ const useLogin = () => {
             'Content-Type': 'application/json',
             'X-CSRF-TOKEN': document.querySelector('meta[name=csrf_token]').content
           },
-          body: JSON.stringify({ username: input.username, password: input.password })
+          body: JSON.stringify({ username: input.username, password: input.password }),
+          signal: abortController.signal
         });
         const data = await response.json();
         if (data === 401) {
