@@ -1,0 +1,36 @@
+<?php
+
+use Illuminate\Database\Migrations\Migration;
+use Illuminate\Database\Schema\Blueprint;
+use Illuminate\Support\Facades\Schema;
+
+class CreateNotesTable extends Migration
+{
+    /**
+     * Run the migrations.
+     *
+     * @return void
+     */
+    public function up()
+    {
+        Schema::create('notes', function (Blueprint $table) {
+            $table->id();
+            $table->unsignedBigInteger('collections_id');
+            $table->foreign('collections_id')->references('id')->on('collections');
+            $table->string('title')->default('Untitled');
+            $table->longtext('content')->nullable();
+            $table->integer('target_word_count')->default(0)->nullable();
+            $table->timestamps();
+        });
+    }
+
+    /**
+     * Reverse the migrations.
+     *
+     * @return void
+     */
+    public function down()
+    {
+        Schema::dropIfExists('notes');
+    }
+}
