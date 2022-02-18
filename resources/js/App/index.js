@@ -1,6 +1,7 @@
 import useApp from './hook';
 import PopupNotification from '@common/PopupNotification';
 import Auth from '@pages/Auth';
+import Home from '@pages/Home';
 
 const App = () => {
   const { isAuthenticated } = useApp();
@@ -10,7 +11,7 @@ const App = () => {
       <PopupNotification />
 
       {isAuthenticated ? (
-        <h1>Welcome</h1>
+        <Home />
       ) : (
         <Auth />
       )} 

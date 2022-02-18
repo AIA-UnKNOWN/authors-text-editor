@@ -1,6 +1,11 @@
+import Header from '@layouts/Header';
+
 const Home = () => {
   return (
-    <div>
+    <div className="min-h-screen">
+      <Header />
     </div>
   );
 }
+
+export default Home;

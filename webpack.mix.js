@@ -23,4 +23,5 @@ mix.alias({
     '@common': path.join(__dirname, 'resources/js/common'),
     '@animations': path.join(__dirname, 'resources/js/animations'),
     '@pages': path.join(__dirname, 'resources/js/pages'),
+    '@layouts': path.join(__dirname, 'resources/js/layouts'),
 })
