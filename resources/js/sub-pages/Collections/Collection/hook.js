@@ -1,7 +1,12 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import useCollections from '@sub-pages/Collections/hook';
+import { showNotification } from '@reducers/notificationSlice';
 
 const useCollection = collection => {
+  const dispatch = useDispatch();
+  const { getCollections } = useCollections();
   const [title, setTitle] = useState('');
   const [editModeDisable, setEditModeDisable] = useState(true);
   const [buttonText, setButtonText] = useState('Save');
@@ -28,7 +33,8 @@ const useCollection = collection => {
     });
     if (!response.ok) return;
     setEditModeDisable(true);
-    setButtonText('Saved!')
+    setButtonText('Saved!');
+    dispatch(showNotification({ label: 'Saved!' }));
   }
 
   const remove = async () => {
@@ -41,6 +47,8 @@ const useCollection = collection => {
       }
     });
     if (!response.ok) return;
+    getCollections();
+    dispatch(showNotification({ label: 'Collection deleted' }));
   }
 
   return { title, handleTitleChange, editModeDisable, setEditModeDisable, handleTitleChange, save, remove, buttonText };

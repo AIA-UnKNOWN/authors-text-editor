@@ -1,9 +1,11 @@
-import { useState, useEffect } from 'react';
+import { useEffect } from 'react';
 import Cookies from 'js-cookie';
 import camelCaseKeys from 'camelcase-keys';
+import { useDispatch } from 'react-redux';
+import { setCollections } from '@reducers/collectionsSlice';
 
 const useCollections = () => {
-  const [collections, setCollections] = useState([]);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     getCollections();
@@ -18,10 +20,10 @@ const useCollections = () => {
     });
     if (!response.ok) return;
     const collections = await response.json();
-    setCollections(camelCaseKeys(collections));
+    dispatch(setCollections({ list: camelCaseKeys(collections) }));
   }
 
-  return { collections, setCollections, getCollections };
+  return { getCollections };
 }
 
 export default useCollections;

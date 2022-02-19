@@ -2,7 +2,12 @@ import useCollection from './hook';
 import ActionPanel from './ActionPanel';
 
 const Collection = ({ data }) => {
-  const { title, handleTitleChange, editModeDisable, setEditModeDisable, save, remove, buttonText } = useCollection(data);
+  const {
+    title, handleTitleChange,
+    editModeDisable, setEditModeDisable,
+    save, remove,
+    buttonText
+  } = useCollection(data);
 
   return (
     <div className="border border-dark-gray bg-white rounded-md px-4 mb-2">

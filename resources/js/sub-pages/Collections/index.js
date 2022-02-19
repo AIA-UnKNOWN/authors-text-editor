@@ -1,8 +1,10 @@
+import { useSelector } from 'react-redux';
 import useCollections from './hook';
 import Collection from './Collection';
 
 const Collections = () => {
-  const { collections } = useCollections();
+  const collections = useSelector(state => state.collections.list);
+  useCollections();
 
   return (
     <div className="h-full">
