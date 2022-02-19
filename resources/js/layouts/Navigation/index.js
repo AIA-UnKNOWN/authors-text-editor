@@ -3,7 +3,7 @@ import Toggler from '@common/Toggler';
 
 const Navigation = ({ className, onSwitchToCollections, onLogout }) => {
   return (
-    <div className={`${className} lg:flex fixed lg:static left-0 top-[60px] self-start flex-col lg:flex-row justify-center items-center h-full w-full lg:w-fit`}>
+    <div className={`${className} bg-white lg:flex fixed lg:static left-0 top-[60px] self-start flex-col lg:flex-row justify-center items-center h-full w-full lg:w-fit`}>
       <Toggler
         className="absolute lg:static top-[20px] right-[20px]"
         onEnable={() => console.log('toggler ON')}
