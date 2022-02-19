@@ -2,6 +2,7 @@ import { useState } from 'react';
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
 import { showNotification } from '@reducers/notificationSlice';
+import { setIsAuthenticated } from '@reducers/userSlice';
 
 const useHeader = () => {
   const dispatch = useDispatch();
@@ -18,6 +19,7 @@ const useHeader = () => {
     });
     if (!response.ok) return;
     Cookies.remove('token');
+    dispatch(setIsAuthenticated({ authenticate: false }));
     dispatch(showNotification({ label: 'Logged Out' }));
   }
 
