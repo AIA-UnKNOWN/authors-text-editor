@@ -5,7 +5,7 @@ const Collection = ({ data }) => {
   const { title, handleTitleChange, editModeDisable, setEditModeDisable, save, remove, buttonText } = useCollection(data);
 
   return (
-    <div className="border border-dark-gray rounded-md px-4 mb-2">
+    <div className="border border-dark-gray bg-white rounded-md px-4 mb-2">
       <div className="min-h-[100px] py-2 flex flex-wrap justify-center items-center">
         {editModeDisable ? (
           <span className="text-[20px] text-center">

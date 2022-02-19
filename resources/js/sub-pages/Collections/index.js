@@ -7,7 +7,7 @@ const Collections = () => {
   return (
     <div className="h-full">
       <div className="wrapper w-full lg:w-[800px] bg-light-gray-1 h-full">
-        <div className="h-full px-4">
+        <div className="h-full px-4 w-full md:w-[540px] mx-auto">
           <p className="text-[30px] font-medium text-center py-4 border-b border-dark-gray">
             Collections
           </p>
