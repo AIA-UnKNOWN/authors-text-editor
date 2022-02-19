@@ -5,7 +5,7 @@ import Navigation from '@layouts/Navigation';
 
 const Header = () => {
   const user = useSelector(state => state.user.data);
-  const { showNav, setShowNav } = useHeader();
+  const { showNav, logout, setShowNav } = useHeader();
 
   return (
     <div className="px-4 shadow-sm">
@@ -26,7 +26,7 @@ const Header = () => {
         <Navigation
           className={showNav ? 'flex' : 'hidden'}
           onSwitchToCollections={() => console.log('Collections')}
-          onLogout={() => console.log('Logout')}
+          onLogout={logout}
         />
       </div>
     </div>
