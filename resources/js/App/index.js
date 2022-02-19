@@ -7,7 +7,7 @@ const App = () => {
   const { isAuthenticated } = useApp();
 
   return (
-    <div>
+    <div className="flex flex-col flex-1 h-screen">
       <PopupNotification />
 
       {isAuthenticated ? (
