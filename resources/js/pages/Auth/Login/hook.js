@@ -42,7 +42,7 @@ const useLogin = () => {
           return;
         }
         Cookies.set('token', data.token, { expires: 15 });
-        dispatch(setUser(camelCaseKeys(data.user)));
+        dispatch(setUser({ data: camelCaseKeys(data.user) }));
         dispatch(showNotification({ label: 'Login Successfully' }));
         dispatch(setIsAuthenticated({ authenticate: true }));
         setButtonText('Login');
