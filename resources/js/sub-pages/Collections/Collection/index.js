@@ -1,5 +1,5 @@
-import { FaBook, FaPen, FaTrashAlt } from 'react-icons/fa';
 import useCollection from './hook';
+import ActionPanel from './ActionPanel';
 
 const Collection = ({ data }) => {
   const { title, handleTitleChange, editModeDisable, setEditModeDisable, save, remove, buttonText } = useCollection(data);
@@ -29,32 +29,11 @@ const Collection = ({ data }) => {
         )}
       </div>
 
-      <div className="flex justify-between items-center border-t border-dark-gray h-[40px]">
-        <div className="flex items-center">
-          <div
-            className="text-dark-gray flex items-center"
-          >
-            <FaBook />
-            <span className="ml-1 text-[13px]">0</span>
-          </div>
-        </div>
-        <div className="flex items-center">
-          <button
-            onClick={() => setEditModeDisable(!editModeDisable)}
-            className="text-dark-gray flex items-center"
-          >
-            <FaPen />
-            <span className="ml-1 text-[10px]">Edit</span>
-          </button>
-          <button
-            onClick={() => remove(data.id)}
-            className="text-dark-gray flex items-center ml-4"
-          >
-            <FaTrashAlt />
-            <span className="ml-1 text-[10px]">Delete</span>
-          </button>
-        </div>
-      </div>
+      <ActionPanel
+        notesCount={0}
+        onEdit={() => setEditModeDisable(!editModeDisable)}
+        onDelete={() => remove(data.id)}
+      />
     </div>
   );
 }
