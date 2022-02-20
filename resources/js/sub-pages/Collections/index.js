@@ -6,7 +6,7 @@ import FetchLoading from '@animations/FetchLoading';
 
 const Collections = () => {
   const collections = useSelector(state => state.collections.list);
-  useCollections();
+  const { isLoading } = useCollections();
 
   return (
     <div className="flex flex-col flex-1">
@@ -16,7 +16,9 @@ const Collections = () => {
             Collections
           </p>
           
-          {collections.length > 0 ? (
+          {isLoading ? (
+            <FetchLoading />
+          ) : collections.length > 0 ? (
             <div className="pt-4 flex flex-col flex-1">
               {collections.map(collection => (
                 <Collection
@@ -27,8 +29,12 @@ const Collections = () => {
               <AddButton />
             </div>
           ) : (
-            <FetchLoading />
+            <div className="pt-4 flex flex-col flex-1 justify-center items-center">
+              <AddButton />
+              <span>You don't have any collections.</span>
+            </div>
           )}
+
         </div>
       </div>
     </div>
