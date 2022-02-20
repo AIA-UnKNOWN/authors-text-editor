@@ -17,7 +17,7 @@ const Collections = () => {
           </p>
           
           {collections.length > 0 ? (
-            <div className="pt-4 flex flex-col flex-1 overflow-auto">
+            <div className="pt-4 flex flex-col flex-1">
               {collections.map(collection => (
                 <Collection
                   key={collection.id}

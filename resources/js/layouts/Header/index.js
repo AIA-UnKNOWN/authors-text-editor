@@ -8,7 +8,7 @@ const Header = () => {
   const { showNav, logout, setShowNav } = useHeader();
 
   return (
-    <div className="px-4 shadow-sm">
+    <div className="px-4 shadow-sm sticky top-0 left-0 bg-white">
       <div className="wrapper h-[60px] flex items-center justify-between">
         <div className="w-fit flex items-center">
           <img
