@@ -24,6 +24,7 @@ Route::get('/user', [AuthController::class, 'currentUser'])->middleware('auth:sa
 
 Route::prefix('/collections')->group(function () {
     Route::get('/', Collections\IndexController::class)->middleware('auth:sanctum');
+    Route::post('/add', Collections\AddController::class)->middleware('auth:sanctum');
 });
 Route::prefix('/collection')->group(function () {
     Route::put('/{collectionId}/update', Collection\UpdateController::class)->middleware('auth:sanctum');

@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import useCollections from './hook';
 import Collection from './Collection';
+import AddButton from './AddButton';
 import FetchLoading from '@animations/FetchLoading';
 
 const Collections = () => {
@@ -23,6 +24,7 @@ const Collections = () => {
                   data={collection}
                 />
               ))}
+              <AddButton />
             </div>
           ) : (
             <FetchLoading />
