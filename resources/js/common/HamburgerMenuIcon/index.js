@@ -1,18 +1,10 @@
 import './style.css';
-import { useState } from 'react';
 
-const HamburgerMenuIcon = ({ onToggle }) => {
-  const [isToggle, setIsToggle] = useState(false);
-
-  const toggle = () => {
-    setIsToggle(!isToggle);
-    onToggle();
-  }
-
+const HamburgerMenuIcon = ({ showNav, onToggle }) => {
   return (
     <div
-      className={`hamburger-menu-icon ${isToggle && 'toggled'}`}
-      onClick={() => toggle()}
+      className={`hamburger-menu-icon ${showNav && 'toggled'}`}
+      onClick={() => onToggle()}
     >
       <div className="bar"></div>
       <div className="bar"></div>

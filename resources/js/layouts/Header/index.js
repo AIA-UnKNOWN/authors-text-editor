@@ -20,6 +20,7 @@ const Header = () => {
         </div>
 
         <HamburgerMenuIcon
+          showNav={showNav}
           onToggle={() => setShowNav(!showNav)}
         />
 
