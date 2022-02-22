@@ -5,11 +5,18 @@ import { useDispatch } from 'react-redux';
 import { setCollections } from '@reducers/collectionsSlice';
 
 const useCollections = () => {
+  const abortController = new AbortController();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
 
   useEffect(() => {
-    getCollections();
+    if (
+      Cookies.get('tab') !== 'notes' ||
+      !Cookies.get('collectionId')
+    ) getCollections();
+    return () => {
+      abortController.abort();
+    }
   }, []);
 
   const getCollections = async () => {
@@ -17,7 +24,8 @@ const useCollections = () => {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Cookies.get('token')}`
-      }
+      },
+      signal: abortController.signal
     });
     if (!response.ok) return;
     const collections = await response.json();
