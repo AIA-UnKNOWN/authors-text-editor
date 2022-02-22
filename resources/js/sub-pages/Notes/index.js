@@ -9,7 +9,7 @@ const Notes = () => {
   useNotes(notes.collectionId || Cookies.get('collectionId'));
 
   return (
-    <div>
+    <div className="bg-light-gray-1 relative flex flex-col flex-1">
       <NoteList notes={notes.list} />
       <TextEditor />
     </div>

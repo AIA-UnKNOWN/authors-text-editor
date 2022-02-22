@@ -1,4 +1,4 @@
-const Title = ({ title, onTitleChange, onSave, isEditModeDisable, saveButtonLabel, onClick }) => {
+const Title = ({ title, onTitleChange, onSave, isEditModeDisable, saveButtonLabel }) => {
   return (
     <div className="min-h-[100px] py-2 flex flex-wrap justify-center items-center cursor-pointer">
       {isEditModeDisable ? (
