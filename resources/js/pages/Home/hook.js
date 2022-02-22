@@ -1,14 +1,18 @@
-import { useEffect, useState } from 'react';
+import { useEffect } from 'react';
 import Cookies from 'js-cookie';
+import { useDispatch } from 'react-redux';
+import { setTab } from '@reducers/tabsSlice';
 import Collections from '@sub-pages/Collections';
+import Notes from '@sub-pages/Notes';
 
 const useHome = () => {
-  const DEFAULT_TAB = 'collections';
-  const [currentTab, setCurrentTab] = useState(DEFAULT_TAB);
+  const dispatch = useDispatch();
   
   useEffect(() => {
     const existingTab = Cookies.get('tab');
-    if (existingTab) setCurrentTab(existingTab);
+    if (existingTab) {
+      dispatch(setTab({ tab: existingTab }));
+    }
   }, []);
 
   const renderPage = tab => {
@@ -16,13 +20,13 @@ const useHome = () => {
       case 'profile':
         return (<h1>Profile</h1>);
       case 'notes':
-        return (<h1>Notes</h1>);
+        return (<Notes />);
       default:
         return (<Collections />);
     }
   }
 
-  return { currentTab, setCurrentTab, renderPage };
+  return { renderPage };
 }
 
 export default useHome;

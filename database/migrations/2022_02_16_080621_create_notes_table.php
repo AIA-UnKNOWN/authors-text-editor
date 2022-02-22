@@ -15,8 +15,8 @@ class CreateNotesTable extends Migration
     {
         Schema::create('notes', function (Blueprint $table) {
             $table->id();
-            $table->unsignedBigInteger('collections_id');
-            $table->foreign('collections_id')->references('id')->on('collections');
+            $table->unsignedBigInteger('collection_id');
+            $table->foreign('collection_id')->references('id')->on('collections');
             $table->string('title')->default('Untitled');
             $table->longtext('content')->nullable();
             $table->integer('target_word_count')->default(0)->nullable();

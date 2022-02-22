@@ -5,6 +5,7 @@ use Illuminate\Support\Facades\Route;
 use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Collections;
 use App\Http\Controllers\Collection;
+use App\Http\Controllers\Notes;
 
 /*
 |--------------------------------------------------------------------------
@@ -29,4 +30,7 @@ Route::prefix('/collections')->group(function () {
 Route::prefix('/collection')->group(function () {
     Route::put('/{collectionId}/update', Collection\UpdateController::class)->middleware('auth:sanctum');
     Route::delete('/{collectionId}/delete', Collection\DeleteController::class)->middleware('auth:sanctum');
+});
+Route::prefix('/notes')->group(function () {
+    Route::get('/{collectionId}', Notes\IndexController::class)->middleware('auth:sanctum');
 });

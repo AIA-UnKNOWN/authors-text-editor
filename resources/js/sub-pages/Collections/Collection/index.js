@@ -15,11 +15,12 @@ const Collection = ({ data }) => {
       <Title
         title={title}
         onTitleChange={handleTitleChange}
-        onSave={() => save()}
+        onSave={save}
         isEditModeDisable={editModeDisable}
         saveButtonLabel={buttonText}
       />
       <ActionPanel
+        collectionId={data.id}
         notesCount={0}
         onEdit={() => setEditModeDisable(!editModeDisable)}
         onDelete={() => remove(data.id)}
