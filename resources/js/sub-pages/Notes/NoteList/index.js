@@ -1,7 +1,10 @@
 import { FaPlus } from 'react-icons/fa';
+import useNoteList from './hook';
 import Note from './Note';
 
 const NoteList = ({ notes }) => {
+  const { addNote } = useNoteList();
+
   return (
     <div className="overflow-y-auto bg-white absolute top-0 left-0 h-full w-full">
       <div>
@@ -9,7 +12,7 @@ const NoteList = ({ notes }) => {
           <div className="py-4 border-b border-dark-gray mb-4">
             <button
               className="w-[40px] h-[40px] flex justify-center items-center border border-dark-gray text-[25px] text-dark-gray rounded-md"
-              onClick={() => console.log('Add note')}
+              onClick={addNote}
             >
               <FaPlus />
             </button>
