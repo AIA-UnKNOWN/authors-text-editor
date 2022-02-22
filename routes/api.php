@@ -6,6 +6,7 @@ use App\Http\Controllers\AuthController;
 use App\Http\Controllers\Collections;
 use App\Http\Controllers\Collection;
 use App\Http\Controllers\Notes;
+use App\Http\Controllers\Note;
 
 /*
 |--------------------------------------------------------------------------
@@ -33,4 +34,8 @@ Route::prefix('/collection')->group(function () {
 });
 Route::prefix('/notes')->group(function () {
     Route::get('/{collectionId}', Notes\IndexController::class)->middleware('auth:sanctum');
+});
+Route::prefix('/note')->group(function () {
+    Route::put('/{id}/update', Note\UpdateController::class)->middleware('auth:sanctum');
+    Route::delete('/{id}/delete', Note\DeleteController::class)->middleware('auth:sanctum');
 });

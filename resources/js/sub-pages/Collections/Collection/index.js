@@ -23,7 +23,7 @@ const Collection = ({ data }) => {
         collectionId={data.id}
         notesCount={0}
         onEdit={() => setEditModeDisable(!editModeDisable)}
-        onDelete={() => remove(data.id)}
+        onDelete={() => remove()}
       />
     </div>
   );
