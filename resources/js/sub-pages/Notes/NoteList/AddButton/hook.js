@@ -2,7 +2,7 @@ import { useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
 import useNotes from '@sub-pages/Notes/hook';
 
-const useNoteList = () => {
+const useAddButton = () => {
   const notes = useSelector(state => state.notes);
   const collectionId = notes.collectionId || Cookies.get('collectionId');
   const { getNotes } = useNotes(collectionId);
@@ -24,4 +24,4 @@ const useNoteList = () => {
   return { addNote };
 }
 
-export default useNoteList;
+export default useAddButton;
