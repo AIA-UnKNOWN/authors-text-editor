@@ -13,7 +13,7 @@ module.exports = {
       'gray': '#C4C4C4',
       'light-gray-1': '#F9F9F9',
       'light-gray-2': '#E5E5E5',
-      'light-pink': 'rgba(#FB4FFF, 0.25)',
+      'light-pink': '#FDB1FF',
       'red': 'red'
     },
     extend: {},
