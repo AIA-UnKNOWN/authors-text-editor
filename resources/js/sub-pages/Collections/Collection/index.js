@@ -21,7 +21,7 @@ const Collection = ({ data }) => {
       />
       <ActionPanel
         collectionId={data.id}
-        notesCount={0}
+        notesCount={data.notesCount}
         onEdit={() => setEditModeDisable(!editModeDisable)}
         onDelete={() => remove()}
       />

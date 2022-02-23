@@ -11,7 +11,15 @@ class IndexController extends Controller
     function __invoke(Request $request)
     {
         $collections = DB::table('collections')
-            ->select('collections.*')
+            ->select(
+                'collections.*',
+                DB::raw(
+                    '(SELECT
+                        COUNT(*)
+                    FROM notes
+                    WHERE notes.collection_id = collections.id) AS notes_count'
+                )
+            )
             ->join('users', 'collections.user_id', '=', 'users.id')
             ->where('collections.user_id', auth()->user()->id)
             ->get();

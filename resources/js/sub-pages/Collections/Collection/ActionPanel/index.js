@@ -3,7 +3,7 @@ import useActionPanel from './hook';
 
 const ActionPanel = ({ collectionId, notesCount, onEdit, onDelete }) => {
   const { goToNotes } = useActionPanel(collectionId);
-
+  
   return (
     <div className="flex justify-between items-center border-t border-dark-gray h-[40px]">
       <div className="flex items-center">
