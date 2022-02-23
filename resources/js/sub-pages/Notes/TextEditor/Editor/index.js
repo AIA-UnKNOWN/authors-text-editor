@@ -16,7 +16,7 @@ const Editor = () => {
         </textarea>
       </div>
       
-      <div className="relative">
+      <div className="relative lg:flex lg:justify-between lg:items-center lg:py-2">
         <EditModeToggler
           className="hidden lg:flex"
         />
