@@ -3,6 +3,7 @@ import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
 import useNotes from '@sub-pages/Notes/hook';
 import { showNotification } from '@reducers/notificationSlice';
+import { setNote } from '@reducers/noteSlice';
 
 const useNote = note => {
   const collectionId = useSelector(state => state.notes.collectionId);
@@ -53,7 +54,13 @@ const useNote = note => {
     dispatch(showNotification({ label: 'Note deleted' }));
   }
 
-  return { title, editModeDisable, setEditModeDisable, buttonText, handleTitleChange, save, remove };
+  const selectNote = () => {
+    dispatch(setNote({ note }));
+    Cookies.set('noteId', note.id, { expires: 3 });
+    Cookies.set('showNotesList', true, { expires: 3 });
+  }
+
+  return { title, editModeDisable, setEditModeDisable, buttonText, handleTitleChange, save, remove, selectNote };
 }
 
 export default useNote;

@@ -1,12 +1,15 @@
 import { FaCaretLeft } from 'react-icons/fa';
+import { useSelector } from 'react-redux';
 import Editor from './Editor';
 
 const TextEditor = ({ isShowNotes, onClickShowNotesToggler }) => {
+  const title = useSelector(state => state.note.data.title);
+
   return (
     <div className="lg:relative flex flex-col flex-1">
       <div className="flex flex-col flex-1 px-4 lg:px-8">
         <p className="py-4 text-[20px] lg:text-[30px] text-center font-bold border-b border-dark-gray">
-          Chapter 1: Introduction of the story
+          {title}
         </p>
 
         <div

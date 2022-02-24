@@ -37,6 +37,7 @@ Route::prefix('/notes')->group(function () {
     Route::post('/add', Notes\AddController::class)->middleware('auth:sanctum');
 });
 Route::prefix('/note')->group(function () {
+    Route::get('/{id}', Note\IndexController::class)->middleware('auth:sanctum');
     Route::put('/{id}/update', Note\UpdateController::class)->middleware('auth:sanctum');
     Route::delete('/{id}/delete', Note\DeleteController::class)->middleware('auth:sanctum');
 });

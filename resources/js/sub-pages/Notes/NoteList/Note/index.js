@@ -7,9 +7,9 @@ const Note = ({ data, onOpen }) => {
     title, handleTitleChange,
     editModeDisable, setEditModeDisable,
     buttonText,
-    save, remove
+    save, remove, selectNote
   } = useNote(data);
-
+  
   return (
     <div className="border border-dark-gray rounded-md px-4 mb-2">
       <Title
@@ -21,7 +21,10 @@ const Note = ({ data, onOpen }) => {
       />
       <ActionPanel
         wordCount={3000}
-        onOpen={onOpen}
+        onOpen={() => {
+          onOpen();
+          selectNote();
+        }}
         onEdit={() => setEditModeDisable(!editModeDisable)}
         onDelete={remove}
       />

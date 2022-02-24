@@ -12,7 +12,10 @@ class UpdateController extends Controller
     {
         $affected = DB::table('notes')
             ->where('id', $id)
-            ->update(['title' => $request->get('title')]);
+            ->update([
+                'title' => $request->get('title'),
+                'content' => $request->get('content')
+            ]);
         return response()->json(['message' => 'updated'], 200);
     }
 }

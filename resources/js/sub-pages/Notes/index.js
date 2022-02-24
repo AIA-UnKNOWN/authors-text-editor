@@ -20,7 +20,10 @@ const Notes = () => {
       )}
       <TextEditor
         isShowNotes={isShowNotes}
-        onClickShowNotesToggler={() => setIsShowNotes(!isShowNotes)}
+        onClickShowNotesToggler={() => {
+          setIsShowNotes(!isShowNotes);
+          Cookies.set('showNotesList', !isShowNotes, { expires: 3 });
+        }}
       />
     </div>
   );

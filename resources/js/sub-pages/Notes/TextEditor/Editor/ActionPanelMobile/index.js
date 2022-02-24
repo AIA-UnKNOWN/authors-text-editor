@@ -3,7 +3,7 @@ import useActionPanelMobile from './hook';
 import Button from '@common/Button';
 import EditModeToggler from '../EditModeToggler';
 
-const ActionPanelMobile = () => {
+const ActionPanelMobile = ({ saveButtonText, onSave }) => {
   const { isCollapsed, setIsCollapsed } = useActionPanelMobile();
 
   return (
@@ -22,8 +22,8 @@ const ActionPanelMobile = () => {
           />
           <Button
             className="w-full h-10 text-[15px]"
-            label="Save"
-            onClick={() => null}
+            label={saveButtonText}
+            onClick={onSave}
           />
         </div>
       )}
