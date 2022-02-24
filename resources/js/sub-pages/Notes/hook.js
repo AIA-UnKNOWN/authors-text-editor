@@ -7,6 +7,7 @@ import { setNotes } from '@reducers/notesSlice';
 const useNotes = collectionId => {
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
+  const [isShowNotes, setIsShowNotes] = useState(true);
   
   useEffect(() => {
     getNotes();
@@ -25,7 +26,7 @@ const useNotes = collectionId => {
     setIsLoading(false);
   }
 
-  return { getNotes, isLoading };
+  return { getNotes, isLoading, isShowNotes, setIsShowNotes };
 }
 
 export default useNotes;

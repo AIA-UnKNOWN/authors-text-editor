@@ -7,15 +7,21 @@ import TextEditor from './TextEditor';
 
 const Notes = () => {
   const notes = useSelector(state => state.notes);
-  const { isLoading } = useNotes(notes.collectionId || Cookies.get('collectionId'));
+  const { isLoading, isShowNotes, setIsShowNotes } = useNotes(notes.collectionId || Cookies.get('collectionId'));
 
   return (
     <div className="notes-page bg-light-gray-1 relative flex flex-col lg:flex-row flex-1">
-      <NoteList
-        isLoading={isLoading}
-        notes={notes.list}
+      {isShowNotes && (
+        <NoteList
+          isLoading={isLoading}
+          notes={notes.list}
+          onOpenNote={() => setIsShowNotes(!isShowNotes)}
+        />
+      )}
+      <TextEditor
+        isShowNotes={isShowNotes}
+        onClickShowNotesToggler={() => setIsShowNotes(!isShowNotes)}
       />
-      <TextEditor />
     </div>
   );
 }

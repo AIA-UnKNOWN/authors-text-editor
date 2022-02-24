@@ -2,8 +2,13 @@ import useNote from './hook';
 import Title from '@sub-pages/Collections/Collection/Title';
 import ActionPanel from './ActionPanel';
 
-const Note = ({ data }) => {
-  const { title, editModeDisable, setEditModeDisable, buttonText, handleTitleChange, save, remove } = useNote(data);
+const Note = ({ data, onOpen }) => {
+  const {
+    title, handleTitleChange,
+    editModeDisable, setEditModeDisable,
+    buttonText,
+    save, remove
+  } = useNote(data);
 
   return (
     <div className="border border-dark-gray rounded-md px-4 mb-2">
@@ -16,7 +21,7 @@ const Note = ({ data }) => {
       />
       <ActionPanel
         wordCount={3000}
-        onOpen={() => null}
+        onOpen={onOpen}
         onEdit={() => setEditModeDisable(!editModeDisable)}
         onDelete={remove}
       />

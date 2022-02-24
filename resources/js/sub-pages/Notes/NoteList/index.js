@@ -2,9 +2,15 @@ import AddButton from './AddButton';
 import Note from './Note';
 import FetchLoading from '@animations/FetchLoading';
 
-const NoteList = ({ isLoading, notes }) => {
+const NoteList = ({ isLoading, notes, onOpenNote }) => {
   return (
-    <div className="overflow-y-auto bg-white absolute lg:relative top-0 left-0 z-10 flex flex-col flex-1 lg:grow-0 lg:basis-[350px] h-full w-full lg:shadow-lg">
+    <div className="flex flex-col flex-1
+      lg:grow-0 lg:basis-[350px] overflow-y-auto
+      bg-white absolute lg:relative
+      top-0 left-0 z-10
+      h-full w-full lg:shadow-xl
+      lg:border-r lg:border-dark-gray"
+    >
       <div className="flex flex-col flex-1">
         <div className="px-4 flex flex-col flex-1">
           <AddButton />
@@ -17,6 +23,7 @@ const NoteList = ({ isLoading, notes }) => {
                 <Note
                   key={note.id}
                   data={note}
+                  onOpen={onOpenNote}
                 />
               ))}
             </div>
