@@ -8,7 +8,7 @@ const Editor = () => {
     <div className="flex flex-col flex-1">
       <div className="border border-dark-gray mt-4 rounded-md flex flex-col flex-1">
         <textarea
-          className="block w-full h-full resize-none p-2 text-[15px] rounded-md outline-pink"
+          className="block w-full h-full resize-none p-2 text-[20px] rounded-md outline-pink"
           placeholder="What's on your mind?"
           onChange={e => console.log(e.target.value)}
         >

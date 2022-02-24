@@ -4,7 +4,7 @@ import FetchLoading from '@animations/FetchLoading';
 
 const NoteList = ({ isLoading, notes }) => {
   return (
-    <div className="overflow-y-auto bg-white absolute top-0 left-0 flex flex-col flex-1 h-full w-full">
+    <div className="overflow-y-auto bg-white absolute lg:relative top-0 left-0 z-10 flex flex-col flex-1 lg:grow-0 lg:basis-[350px] h-full w-full lg:shadow-lg">
       <div className="flex flex-col flex-1">
         <div className="px-4 flex flex-col flex-1">
           <AddButton />
