@@ -5,7 +5,7 @@ const TextEditor = ({ isShowNotes, onClickShowNotesToggler }) => {
   return (
     <div className="lg:relative flex flex-col flex-1">
       <div className="flex flex-col flex-1 px-4 lg:px-8">
-        <p className="py-4 text-[30px] text-center font-medium border-b border-dark-gray">
+        <p className="py-4 text-[20px] lg:text-[30px] text-center font-bold border-b border-dark-gray">
           Chapter 1: Introduction of the story
         </p>
 
