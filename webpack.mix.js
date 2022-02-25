@@ -19,6 +19,7 @@ mix
     ]);
     
 mix.alias({
+    '@images': path.join(__dirname, 'public/images'),
     '@reducers': path.join(__dirname, 'resources/js/reducers'),
     '@common': path.join(__dirname, 'resources/js/common'),
     '@animations': path.join(__dirname, 'resources/js/animations'),
