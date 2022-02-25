@@ -1,4 +1,5 @@
 import { useSelector } from 'react-redux';
+import Cookies from 'js-cookie';
 import useEditor from './hook';
 import Button from '@common/Button';
 import EditModeToggler from './EditModeToggler';
@@ -12,13 +13,23 @@ const Editor = () => {
   return (
     <div className="flex flex-col flex-1">
       <div className="border border-dark-gray mt-4 rounded-md flex flex-col flex-1">
-        <textarea
-          className="block w-full h-full resize-none p-2 text-[15px] lg:text-[20px] rounded-md outline-pink"
-          placeholder="What's on your mind?"
-          onChange={handleContentChange}
-          value={note.content || ''}
-        >
-        </textarea>
+        {note.id || Cookies.get('noteId') ? (
+          <textarea
+            className="block w-full h-full resize-none p-2 text-[15px] lg:text-[20px] rounded-md outline-pink"
+            placeholder="What's on your mind?"
+            onChange={handleContentChange}
+            value={note.content || ''}
+          >
+          </textarea>
+        ) : (
+          <div
+          className="flex justify-center items-center w-full h-full rounded-md outline-pink bg-white"
+          >
+            <span className="text-[25px]">
+              Please select note first
+            </span>
+          </div>
+        )}
       </div>
       
       <div className="relative lg:flex lg:justify-between lg:items-center lg:py-2">
