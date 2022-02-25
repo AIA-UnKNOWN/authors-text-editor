@@ -23,7 +23,7 @@ const Editor = () => {
           </textarea>
         ) : (
           <div
-          className="flex justify-center items-center w-full h-full rounded-md outline-pink bg-white"
+            className="flex justify-center items-center w-full h-full rounded-md outline-pink bg-white"
           >
             <span className="text-[25px]">
               Please select note first

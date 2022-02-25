@@ -20,8 +20,7 @@ const useEditor = noteId => {
   }
 
   const getNote = async () => {
-    const noteId = noteId || Cookies.get('noteId');
-    const response = await fetch(`/api/note/${noteId}`, {
+    const response = await fetch(`/api/note/${noteId || Cookies.get('noteId')}`, {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Cookies.get('token')}`
@@ -34,8 +33,7 @@ const useEditor = noteId => {
 
   const updateNoteContent = async () => {
     setSaveButtonText('Saving...');
-    const noteId = noteId || Cookies.get('noteId');
-    const response = await fetch(`/api/note/${noteId}/update`, {
+    const response = await fetch(`/api/note/${noteId || Cookies.get('noteId')}/update`, {
       method: 'PUT',
       headers: {
         'Content-Type': 'application/json',
