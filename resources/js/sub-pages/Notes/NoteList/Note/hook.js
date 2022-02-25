@@ -31,7 +31,7 @@ const useNote = note => {
         Authorization: `Bearer ${Cookies.get('token')}`,
         'X-CSRF-TOKEN': document.querySelector('meta[name=csrf_token]').content
       },
-      body: JSON.stringify({ title })
+      body: JSON.stringify({ title, content: note.content })
     });
     if (!response.ok) return;
     setEditModeDisable(true);
