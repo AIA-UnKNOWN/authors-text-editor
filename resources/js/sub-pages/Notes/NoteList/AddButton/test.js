@@ -4,7 +4,7 @@ import { Provider } from 'react-redux';
 import configureStore from 'redux-mock-store';
 import AddButton from './index';
 
-test('NoteList Add Button', () => {
+test('NoteList Add Button renders correctly', () => {
   const initialState = { notes: [] };
   const mockStore = configureStore();
 
