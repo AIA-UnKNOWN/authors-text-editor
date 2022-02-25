@@ -34,6 +34,7 @@ const useNote = note => {
       body: JSON.stringify({ title, content: note.content })
     });
     if (!response.ok) return;
+    getNotes();
     setEditModeDisable(true);
     setButtonText('Saved!');
     dispatch(showNotification({ label: 'Saved!' }));
