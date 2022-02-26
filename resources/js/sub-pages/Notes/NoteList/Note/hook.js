@@ -10,11 +10,13 @@ const useNote = note => {
   const dispatch = useDispatch();
   const { getNotes } = useNotes(collectionId || Cookies.get('collectionId'));
   const [title, setTitle] = useState('');
+  const [wordCount, setWordCount] = useState(0);
   const [editModeDisable, setEditModeDisable] = useState(true);
   const [buttonText, setButtonText] = useState('Save');
 
   useEffect(() => {
     setTitle(note.title);
+    setWordCount(getContentWordCount(note.content));
   }, []);
 
   const handleTitleChange = e => {
@@ -61,7 +63,12 @@ const useNote = note => {
     Cookies.set('showNotesList', true, { expires: 3 });
   }
 
-  return { title, editModeDisable, setEditModeDisable, buttonText, handleTitleChange, save, remove, selectNote };
+  const getContentWordCount = content => {
+    const wordCount = content ? content.split(' ').length : 0;
+    return wordCount;
+  }
+
+  return { title, wordCount, editModeDisable, setEditModeDisable, buttonText, handleTitleChange, save, remove, selectNote };
 }
 
 export default useNote;

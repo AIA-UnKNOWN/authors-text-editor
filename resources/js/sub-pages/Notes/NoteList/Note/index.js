@@ -5,6 +5,7 @@ import ActionPanel from './ActionPanel';
 const Note = ({ data, onOpen }) => {
   const {
     title, handleTitleChange,
+    wordCount,
     editModeDisable, setEditModeDisable,
     buttonText,
     save, remove, selectNote
@@ -20,7 +21,7 @@ const Note = ({ data, onOpen }) => {
         saveButtonLabel={buttonText}
       />
       <ActionPanel
-        wordCount={3000}
+        wordCount={wordCount}
         onOpen={() => {
           onOpen();
           selectNote();
