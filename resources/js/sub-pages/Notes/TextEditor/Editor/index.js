@@ -8,7 +8,11 @@ import ActionPanelMobile from './ActionPanelMobile';
 
 const Editor = () => {
   const note = useSelector(state => state.note.data);
-  const { handleContentChange, updateNoteContent, saveButtonText } = useEditor(note.id);
+  const {
+    handleContentChange,
+    updateNoteContent,
+    saveButtonText,
+  } = useEditor(note.id);
 
   return (
     <div className="flex flex-col flex-1">
