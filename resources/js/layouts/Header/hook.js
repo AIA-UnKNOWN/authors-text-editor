@@ -25,9 +25,16 @@ const useHeader = () => {
       }
     });
     if (!response.ok) return;
-    Cookies.remove('token');
     dispatch(setIsAuthenticated({ authenticate: false }));
     dispatch(showNotification({ label: 'Logged Out' }));
+    clearCookies();
+  }
+
+  const clearCookies = () => {
+    const allCookies = Object.keys(Cookies.get());
+    allCookies.forEach(cookieName => {
+      Cookies.remove(cookieName);
+    });
   }
 
   return { showNav, setShowNav, goToCollectionsTab, logout };
