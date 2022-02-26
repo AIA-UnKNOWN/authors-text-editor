@@ -17,6 +17,7 @@ const Editor = () => {
           <textarea
             className="block w-full h-full resize-none p-2 text-[15px] lg:text-[20px] rounded-md outline-pink"
             placeholder="What's on your mind?"
+            spellCheck={false}
             onChange={handleContentChange}
             value={note.content || ''}
           >
