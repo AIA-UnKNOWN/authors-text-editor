@@ -23,7 +23,8 @@ const Note = ({ data, onOpen }) => {
       <ActionPanel
         wordCount={wordCount}
         onOpen={() => {
-          onOpen();
+          const DESKTOP_WIDTH = 1280;
+          if (window.innerWidth < DESKTOP_WIDTH) return onOpen();
           selectNote();
         }}
         onEdit={() => setEditModeDisable(!editModeDisable)}
