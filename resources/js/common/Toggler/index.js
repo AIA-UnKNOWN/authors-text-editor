@@ -3,12 +3,11 @@ import { useState, useEffect } from 'react';
 const Toggler = ({ className, onEnable, onDisable }) => {
   const [isToggle, setIsToggle] = useState(false);
 
-  useEffect(() => {
-    isToggle ? onEnable() : onDisable();
-  }, [isToggle]);
-
   const toggle = () => {
     setIsToggle(!isToggle);
+    !isToggle === true ?
+      onEnable() :
+      onDisable();
   }
 
   return (

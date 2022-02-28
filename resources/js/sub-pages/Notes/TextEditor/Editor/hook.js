@@ -9,6 +9,7 @@ const useEditor = noteId => {
   const note = useSelector(state => state.note.data);
   const dispatch = useDispatch();
   const [saveButtonText, setSaveButtonText] = useState('Save');
+  const [isEditMode, setIsEditMode] = useState(true);
 
   useEffect(() => {
     getNote();
@@ -47,7 +48,7 @@ const useEditor = noteId => {
     setSaveButtonText('Saved!');
   }
 
-  return { getNote, handleContentChange, updateNoteContent, saveButtonText, setSaveButtonText };
+  return { getNote, handleContentChange, updateNoteContent, saveButtonText, setSaveButtonText, isEditMode, setIsEditMode };
 }
 
 export default useEditor;

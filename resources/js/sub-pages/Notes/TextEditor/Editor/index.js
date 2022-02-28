@@ -1,6 +1,7 @@
 import { useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
 import useEditor from './hook';
+import useEditModeTogglerMobile from './ActionPanelMobile/hook';
 import Button from '@common/Button';
 import EditModeToggler from './EditModeToggler';
 import ProgressBar from './ProgressBar';
@@ -12,6 +13,7 @@ const Editor = () => {
     handleContentChange,
     updateNoteContent,
     saveButtonText,
+    isEditMode, setIsEditMode
   } = useEditor(note.id);
 
   return (
@@ -24,6 +26,7 @@ const Editor = () => {
             spellCheck={false}
             onChange={handleContentChange}
             value={note.content || ''}
+            disabled={!isEditMode}
           >
           </textarea>
         ) : (
@@ -40,6 +43,8 @@ const Editor = () => {
       <div className="relative lg:flex lg:justify-between lg:items-center lg:py-2">
         <EditModeToggler
           className="hidden lg:flex"
+          onEditModeEnable={() => setIsEditMode(true)}
+          onEditModeDisable={() => setIsEditMode(false)}
         />
         <ProgressBar />
         <Button
@@ -51,6 +56,8 @@ const Editor = () => {
         <ActionPanelMobile
           saveButtonText={saveButtonText}
           onSave={updateNoteContent}
+          onEditModeEnable={() => setIsEditMode(true)}
+          onEditModeDisable={() => setIsEditMode(false)}
         />
       </div>
     </div>
