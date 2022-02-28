@@ -24,7 +24,11 @@ const Note = ({ data, onOpen }) => {
         wordCount={wordCount}
         onOpen={() => {
           const DESKTOP_WIDTH = 1280;
-          if (window.innerWidth < DESKTOP_WIDTH) return onOpen();
+          if (window.innerWidth < DESKTOP_WIDTH) {
+            onOpen();
+            selectNote();
+            return;
+          };
           selectNote();
         }}
         onEdit={() => setEditModeDisable(!editModeDisable)}
