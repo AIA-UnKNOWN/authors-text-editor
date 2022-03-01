@@ -8,6 +8,9 @@ test('Note renders correctly', () => {
   const initialState = {
     notes: {
       collectionId: 1
+    },
+    note: {
+      data: {}
     }
   };
   const mockStore = configureStore();
