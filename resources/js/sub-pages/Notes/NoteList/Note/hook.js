@@ -2,6 +2,7 @@ import { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
 import useNotes from '@sub-pages/Notes/hook';
+import useEditor from '@sub-pages/Notes/TextEditor/Editor/hook';
 import { showNotification } from '@reducers/notificationSlice';
 import { setNote } from '@reducers/noteSlice';
 
@@ -9,6 +10,7 @@ const useNote = note => {
   const collectionId = useSelector(state => state.notes.collectionId);
   const dispatch = useDispatch();
   const { getNotes } = useNotes(collectionId || Cookies.get('collectionId'));
+  const { getNote } = useEditor();
   const [title, setTitle] = useState('');
   const [wordCount, setWordCount] = useState(0);
   const [editModeDisable, setEditModeDisable] = useState(true);
@@ -37,6 +39,7 @@ const useNote = note => {
     });
     if (!response.ok) return;
     getNotes();
+    getNote();
     setEditModeDisable(true);
     setButtonText('Saved!');
     dispatch(showNotification({ label: 'Saved!' }));
