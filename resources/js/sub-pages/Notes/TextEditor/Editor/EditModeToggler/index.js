@@ -1,12 +1,11 @@
-import Toggler from '@common/Toggler';
+import EditModeTogglerMobile from '../ActionPanelMobile/EditModeTogglerMobile';
 
-const EditModeToggler = ({ className, onEditModeEnable, onEditModeDisable }) => {
+const EditModeToggler = ({ className, isEditMode, onToggle }) => {
   return (
     <div className={`${className}`}>
-      <span className="text-[15px] mr-2">Edit Mode</span>
-      <Toggler
-        onEnable={() => onEditModeEnable()}
-        onDisable={() => onEditModeDisable()}
+      <EditModeTogglerMobile
+        isEditMode={isEditMode}
+        onToggle={onToggle}
       />
     </div>
   );

@@ -1,4 +1,4 @@
-const rootDir = '/home/ajboyian/Personal/author-text-editor';
+const rootDir = '/home/ajboyian/Personal/authors-text-editor';
 const src = `${rootDir}/resources/js`;
 
 module.exports = {

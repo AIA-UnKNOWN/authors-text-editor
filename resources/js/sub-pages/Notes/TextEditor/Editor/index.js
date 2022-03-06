@@ -1,7 +1,6 @@
 import { useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
 import useEditor from './hook';
-import useEditModeTogglerMobile from './ActionPanelMobile/hook';
 import Button from '@common/Button';
 import EditModeToggler from './EditModeToggler';
 import ProgressBar from './ProgressBar';
@@ -43,8 +42,8 @@ const Editor = () => {
       <div className="relative lg:flex lg:justify-between lg:items-center lg:py-2">
         <EditModeToggler
           className="hidden lg:flex"
-          onEditModeEnable={() => setIsEditMode(true)}
-          onEditModeDisable={() => setIsEditMode(false)}
+          isEditMode={isEditMode}
+          onToggle={() => setIsEditMode(!isEditMode)}
         />
         <ProgressBar />
         <Button
