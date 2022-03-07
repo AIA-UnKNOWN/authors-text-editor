@@ -9,9 +9,15 @@ const useHeader = () => {
   const dispatch = useDispatch();
   const [showNav, setShowNav] = useState(false);
 
+  const goToProfileTab = () => {
+    dispatch(setTab({ tab: TABS[2] }));
+    Cookies.set('tab', TABS[2], { expires: 3 });
+    Cookies.remove('collectionId');
+  }
+
   const goToCollectionsTab = () => {
     dispatch(setTab({ tab: TABS[0] }));
-    Cookies.remove('tab');
+    Cookies.set('tab', TABS[0], { expires: 3 });
     Cookies.remove('collectionId');
   }
 
@@ -37,7 +43,7 @@ const useHeader = () => {
     });
   }
 
-  return { showNav, setShowNav, goToCollectionsTab, logout };
+  return { showNav, setShowNav, goToProfileTab, goToCollectionsTab, logout };
 }
 
 export default useHeader;

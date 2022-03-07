@@ -7,6 +7,7 @@ use App\Http\Controllers\Collections;
 use App\Http\Controllers\Collection;
 use App\Http\Controllers\Notes;
 use App\Http\Controllers\Note;
+use App\Http\Controllers\ProfilePicture;
 
 /*
 |--------------------------------------------------------------------------
@@ -40,4 +41,7 @@ Route::prefix('/note')->group(function () {
     Route::get('/{id}', Note\IndexController::class)->middleware('auth:sanctum');
     Route::put('/{id}/update', Note\UpdateController::class)->middleware('auth:sanctum');
     Route::delete('/{id}/delete', Note\DeleteController::class)->middleware('auth:sanctum');
+});
+Route::prefix('/profile-picture')->group(function () {
+    Route::get('/', ProfilePicture\IndexController::class)->middleware('auth:sanctum');
 });

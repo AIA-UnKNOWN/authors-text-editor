@@ -6,15 +6,18 @@ import Navigation from '@layouts/Navigation';
 
 const Header = () => {
   const user = useSelector(state => state.user.data);
-  const { showNav, logout, goToCollectionsTab, setShowNav } = useHeader();
-
+  const { showNav, logout, goToProfileTab, goToCollectionsTab, setShowNav } = useHeader();
+  
   return (
     <div className="px-4 shadow-sm sticky top-0 left-0 bg-white z-20">
       <div className="wrapper h-[60px] flex items-center justify-between">
-        <div className="w-fit flex items-center">
+        <div
+          className="w-fit flex items-center rounded-full cursor-pointer"
+          onClick={goToProfileTab}
+        >
           <img
             className="w-[40px] h-[40px] object-cover rounded-full"
-            src={defaultUserProfilePicture}
+            src={user.profilePicture ?? defaultUserProfilePicture}
             alt="Profile picture"
           />
           <span className="text-[15px] ml-2 font-medium">{user.firstName} {user.lastName}</span>
