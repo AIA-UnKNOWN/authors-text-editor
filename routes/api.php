@@ -8,6 +8,7 @@ use App\Http\Controllers\Collection;
 use App\Http\Controllers\Notes;
 use App\Http\Controllers\Note;
 use App\Http\Controllers\ProfilePicture;
+use App\Http\Controllers\User;
 
 /*
 |--------------------------------------------------------------------------
@@ -23,8 +24,11 @@ use App\Http\Controllers\ProfilePicture;
 Route::post('/login', [AuthController::class, 'login']);
 Route::post('/register', [AuthController::class, 'register']);
 Route::delete('/logout', [AuthController::class, 'logout'])->middleware('auth:sanctum');
-Route::get('/user', [AuthController::class, 'currentUser'])->middleware('auth:sanctum');
 
+Route::prefix('/user')->group(function () {
+    Route::get('/', [AuthController::class, 'currentUser'])->middleware('auth:sanctum');
+    Route::put('/update', User\UpdateController::class)->middleware('auth:sanctum');
+});
 Route::prefix('/collections')->group(function () {
     Route::get('/', Collections\IndexController::class)->middleware('auth:sanctum');
     Route::post('/add', Collections\AddController::class)->middleware('auth:sanctum');
