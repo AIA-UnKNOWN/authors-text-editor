@@ -17,6 +17,7 @@ const useHeader = () => {
 
   const goToCollectionsTab = () => {
     dispatch(setTab({ tab: TABS[0] }));
+    Cookies.remove('noteId');
     Cookies.set('tab', TABS[0], { expires: 3 });
     Cookies.remove('collectionId');
   }
