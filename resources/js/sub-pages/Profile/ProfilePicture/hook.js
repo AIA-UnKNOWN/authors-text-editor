@@ -26,7 +26,34 @@ const useProfilePicture = () => {
     }));
   }
 
-  return { getProfilePicture };
+  const processImage = e => {
+    const imageFile = e.target.files[0];
+    const reader = new FileReader();
+    reader.onload = () => {
+      const imageData = reader.result;
+      updateProfilePicture(imageData);
+    }
+    reader.readAsDataURL(imageFile);
+  }
+
+  const updateProfilePicture = async (imageData) => {
+    const response = await fetch('/api/profile-picture/update', {
+      method: 'PUT',
+      headers: {
+        Accept: 'application/json',
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Cookies.get('token')}`,
+        'X-CSRF-TOKEN': document.querySelector('meta[name=csrf_token]').content
+      },
+      body: JSON.stringify({ imageData })
+    });
+    if (!response.ok) return;
+    dispatch(setUser({
+      data: { ...user, profilePicture: imageData }
+    }));
+  }
+
+  return { getProfilePicture, processImage };
 }
 
 export default useProfilePicture;

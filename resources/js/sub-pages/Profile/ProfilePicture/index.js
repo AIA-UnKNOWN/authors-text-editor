@@ -5,7 +5,7 @@ import useProfilePicture from './hook';
 
 const ProfilePicture = () => {
   const user = useSelector(state => state.user.data);
-  useProfilePicture();
+  const { processImage } = useProfilePicture();
 
   return (
     <div className="relative w-[100px] h-[100px] mx-auto mb-4">
@@ -14,12 +14,15 @@ const ProfilePicture = () => {
         src={user.profilePicture ?? defaultUserProfilePicture}
         alt={`${user.firstName}'s profile picture`}
       />
-      <input className="hidden" type="file" id="profile-picture-file" />
+      <input
+        className="hidden" type="file" id="profile-picture-file"
+        accept="image/png, image/jpeg, image/jpg"
+        onChange={processImage}
+      />
       <label
         className="absolute bottom-[5px] right-[5px] w-[25px] h-[25px] bg-pink
         rounded-full flex justify-center items-center text-[15px] text-white
         cursor-pointer"
-        onClick={() => console.log('Edit profile picture')}
         htmlFor="profile-picture-file"
       >
         <FaPen />

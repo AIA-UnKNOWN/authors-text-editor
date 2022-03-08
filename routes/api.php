@@ -48,4 +48,5 @@ Route::prefix('/note')->group(function () {
 });
 Route::prefix('/profile-picture')->group(function () {
     Route::get('/', ProfilePicture\IndexController::class)->middleware('auth:sanctum');
+    Route::put('/update', ProfilePicture\UpdateController::class)->middleware('auth:sanctum');
 });
