@@ -5,7 +5,7 @@ import ActionPanel from './ActionPanel';
 const Note = ({ data, onOpen }) => {
   const {
     title, handleTitleChange,
-    wordCount,
+    wordCount, targetWordCount,
     editModeDisable, setEditModeDisable,
     buttonText,
     save, remove, selectNote
@@ -21,7 +21,9 @@ const Note = ({ data, onOpen }) => {
         saveButtonLabel={buttonText}
       />
       <ActionPanel
+        noteId={data.id}
         wordCount={wordCount}
+        targetWordCount={String(targetWordCount)}
         onOpen={() => {
           const DESKTOP_WIDTH = 1280;
           if (window.innerWidth < DESKTOP_WIDTH) {

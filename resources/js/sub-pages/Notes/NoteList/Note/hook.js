@@ -13,12 +13,14 @@ const useNote = note => {
   const { getNote } = useEditor();
   const [title, setTitle] = useState('');
   const [wordCount, setWordCount] = useState(0);
+  const [targetWordCount, setTargetWordCount] = useState('');
   const [editModeDisable, setEditModeDisable] = useState(true);
   const [buttonText, setButtonText] = useState('Save');
 
   useEffect(() => {
     setTitle(note.title);
     setWordCount(getContentWordCount(note.content));
+    setTargetWordCount(note.targetWordCount);
   }, []);
 
   const handleTitleChange = e => {
@@ -71,7 +73,7 @@ const useNote = note => {
     return wordCount;
   }
 
-  return { title, wordCount, editModeDisable, setEditModeDisable, buttonText, handleTitleChange, save, remove, selectNote };
+  return { title, wordCount, targetWordCount, editModeDisable, setEditModeDisable, buttonText, handleTitleChange, save, remove, selectNote };
 }
 
 export default useNote;

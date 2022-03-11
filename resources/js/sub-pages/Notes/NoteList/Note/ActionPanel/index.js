@@ -1,14 +1,28 @@
 import { FaFileWord, FaPen, FaTrashAlt } from 'react-icons/fa';
+import useActionPanel from './hook';
+import TargetWordCountInput from './TargetWordCountInput';
 
-const ActionPanel = ({ wordCount, onOpen, onEdit, onDelete }) => {
+const ActionPanel = ({ noteId, wordCount, targetWordCount, onOpen, onEdit, onDelete }) => {
+  const { isTargetWordCountInputCollapse, setIsTargetWordCountInputCollapse } = useActionPanel();
+
   return (
     <div className="flex justify-between items-center border-t border-dark-gray h-[40px]">
       <div className="flex items-center">
         <div
-          className="text-dark-gray flex items-center"
+          className="text-dark-gray flex items-center cursor-pointer relative"
+          onClick={() => setIsTargetWordCountInputCollapse(!isTargetWordCountInputCollapse)}
         >
           <FaFileWord />
-          <span className="ml-1 text-[13px]">{wordCount}</span>
+          <span className="ml-1 text-[13px] underline decoration-1 active:opacity-50">
+            {wordCount}
+          </span>
+          
+          {isTargetWordCountInputCollapse && (
+            <TargetWordCountInput
+              noteId={noteId}
+              initialTargetWordCount={targetWordCount}
+            />
+          )}
         </div>
       </div>
       <div className="flex items-center">
