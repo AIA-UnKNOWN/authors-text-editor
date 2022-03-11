@@ -34,6 +34,11 @@ const useHeader = () => {
     if (!response.ok) return;
     dispatch(setIsAuthenticated({ authenticate: false }));
     dispatch(showNotification({ label: 'Logged Out' }));
+    resetUserData();
+  }
+
+  const resetUserData = () => {
+    dispatch(setTab({ tab: TABS[0] }));
     clearCookies();
   }
 
