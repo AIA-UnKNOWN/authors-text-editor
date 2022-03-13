@@ -20,7 +20,8 @@ exports[`Note renders correctly 1`] = `
       className="flex items-center"
     >
       <div
-        className="text-dark-gray flex items-center"
+        className="text-dark-gray flex items-center cursor-pointer relative"
+        onClick={[Function]}
       >
         <svg
           fill="currentColor"
@@ -41,7 +42,7 @@ exports[`Note renders correctly 1`] = `
           />
         </svg>
         <span
-          className="ml-1 text-[13px]"
+          className="ml-1 text-[13px] underline decoration-1 active:opacity-50"
         >
           0
         </span>

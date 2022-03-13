@@ -5,6 +5,7 @@ import configureStore from 'redux-mock-store';
 import Note from './index';
 
 test('Note renders correctly', () => {
+  const data = { id: 1 };
   const initialState = {
     notes: {
       collectionId: 1
@@ -17,7 +18,9 @@ test('Note renders correctly', () => {
 
   const component = renderer.create(
     <Provider store={mockStore(initialState)}>
-      <Note />
+      <Note
+        data={data}
+      />
     </Provider>
   );
   const NoteComponent = component.toJSON();
