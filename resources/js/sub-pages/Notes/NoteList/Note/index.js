@@ -23,7 +23,6 @@ const Note = ({ data, onOpen }) => {
       <ActionPanel
         noteId={data.id}
         wordCount={wordCount}
-        targetWordCount={String(targetWordCount)}
         onOpen={() => {
           const DESKTOP_WIDTH = 1280;
           if (window.innerWidth < DESKTOP_WIDTH) {

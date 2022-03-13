@@ -1,18 +1,36 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
+import camelCaseKeys from 'camelcase-keys';
 import { useDispatch } from 'react-redux';
 import { showNotification } from '@reducers/notificationSlice';
 import useEditor from '@sub-pages/Notes/TextEditor/Editor/hook';
 
-const useTargetWordCountInput = (noteId, initialTargetWordCount) => {
+const useTargetWordCountInput = noteId => {
+  const abortController = new AbortController();
   const dispatch = useDispatch();
   const { getNote } = useEditor(Cookies.get('noteId'));
   const [targetWordCount, setTargetWordCount] = useState('');
   const [saveButtonText, setSaveButtonText] = useState('Save');
 
   useEffect(() => {
-    setTargetWordCount(initialTargetWordCount);
+    getTargetWordCount();
+    return () => {
+      abortController.abort();
+    }
   }, []);
+
+  const getTargetWordCount = async () => {
+    const response = await fetch(`/api/note/${noteId || Cookies.get('noteId')}`, {
+      headers: {
+        'Content-Type': 'application/json',
+        Authorization: `Bearer ${Cookies.get('token')}`
+      },
+      signal: abortController.signal
+    });
+    if (!response.ok) return;
+    const note = camelCaseKeys(await response.json());
+    setTargetWordCount(String(note.targetWordCount));
+  }
 
   const updateWordCount = async () => {
     setSaveButtonText('Saving...');

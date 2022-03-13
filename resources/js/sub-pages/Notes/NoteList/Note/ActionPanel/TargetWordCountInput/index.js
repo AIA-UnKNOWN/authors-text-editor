@@ -1,11 +1,11 @@
 import useTargetWordCountInput from './hook';
 
-const TargetWordCountInput = ({ noteId, initialTargetWordCount }) => {
+const TargetWordCountInput = ({ noteId }) => {
   const {
     targetWordCount, setTargetWordCount,
     saveButtonText, setSaveButtonText,
     updateWordCount
-  } = useTargetWordCountInput(noteId, initialTargetWordCount);
+  } = useTargetWordCountInput(noteId);
 
   return (
     <div

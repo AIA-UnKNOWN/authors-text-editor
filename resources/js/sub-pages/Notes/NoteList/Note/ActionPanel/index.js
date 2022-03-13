@@ -2,7 +2,7 @@ import { FaFileWord, FaPen, FaTrashAlt } from 'react-icons/fa';
 import useActionPanel from './hook';
 import TargetWordCountInput from './TargetWordCountInput';
 
-const ActionPanel = ({ noteId, wordCount, targetWordCount, onOpen, onEdit, onDelete }) => {
+const ActionPanel = ({ noteId, wordCount, onOpen, onEdit, onDelete }) => {
   const { isTargetWordCountInputCollapse, setIsTargetWordCountInputCollapse } = useActionPanel();
 
   return (
@@ -20,7 +20,6 @@ const ActionPanel = ({ noteId, wordCount, targetWordCount, onOpen, onEdit, onDel
           {isTargetWordCountInputCollapse && (
             <TargetWordCountInput
               noteId={noteId}
-              initialTargetWordCount={targetWordCount}
             />
           )}
         </div>
