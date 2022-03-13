@@ -1,6 +1,5 @@
 import { useSelector } from 'react-redux';
 import Button from '@common/Button';
-import Toggler from '@common/Toggler';
 
 const Navigation = ({ className, onSwitchToCollections, onLogout }) => {
   const tab = useSelector(state => state.tabs.tab);

@@ -23,6 +23,9 @@ const useHeader = () => {
   }
 
   const logout = async () => {
+    const confirmed = confirm('Are you sure you want to logout?');
+    if (!confirmed) return;
+
     const response = await fetch('/api/logout', {
       method: 'DELETE',
       headers: {
