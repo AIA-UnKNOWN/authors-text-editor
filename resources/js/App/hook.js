@@ -24,7 +24,12 @@ const useApp = () => {
     if (!response.ok) return;
     const data = await response.json();
     dispatch(setIsAuthenticated({ authenticate: true }));
-    dispatch(setUser({ data: camelCaseKeys(data) }));
+    dispatch(setUser({
+      data: camelCaseKeys({
+        ...data,
+        profile_picture: null
+      })
+    }));
   }
 
   return { isAuthenticated, getCurrentLoggedUser };

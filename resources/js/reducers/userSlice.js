@@ -13,9 +13,12 @@ export const userSlice = createSlice({
     },
     setIsAuthenticated: (state, action) => {
       state.isAuthenticated = action.payload.authenticate;
+    },
+    setProfilePicture: (state, action) => {
+      state.data.profilePicture = action.payload.profilePicture;
     }
   }
 });
 
-export const { setUser, setIsAuthenticated } = userSlice.actions;
+export const { setUser, setIsAuthenticated, setProfilePicture } = userSlice.actions;
 export default userSlice.reducer;

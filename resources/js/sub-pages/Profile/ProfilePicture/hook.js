@@ -1,7 +1,7 @@
 import { useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
 import Cookies from 'js-cookie';
-import { setUser } from '@reducers/userSlice';
+import { setUser, setProfilePicture } from '@reducers/userSlice';
 
 const useProfilePicture = () => {
   const user = useSelector(state => state.user.data);
@@ -21,9 +21,7 @@ const useProfilePicture = () => {
     });
     if (!response.ok) return;
     const profilePicture = await response.json();
-    dispatch(setUser({
-      data: { ...user, profilePicture: profilePicture.source }
-    }));
+    dispatch(setProfilePicture({ profilePicture: profilePicture.source }));
   }
 
   const processImage = e => {

@@ -5,11 +5,14 @@ import { setTab } from '@reducers/tabsSlice';
 import Profile from '@sub-pages/Profile';
 import Collections from '@sub-pages/Collections';
 import Notes from '@sub-pages/Notes';
+import useProfilePicture from '@sub-pages/Profile/ProfilePicture/hook';
 
 const useHome = () => {
+  const { getProfilePicture } = useProfilePicture();
   const dispatch = useDispatch();
   
   useEffect(() => {
+    getProfilePicture();
     const existingTab = Cookies.get('tab');
     if (existingTab) {
       dispatch(setTab({ tab: existingTab }));
