@@ -17,6 +17,7 @@ const useCollections = () => {
       collections === null
     ) getCollections();
     return () => {
+      dispatch(setCollections({ list: null }));
       abortController.abort();
     }
   }, []);
