@@ -3,7 +3,7 @@ import { createSlice } from '@reduxjs/toolkit';
 const collectionsSlice = createSlice({
   name: 'collections',
   initialState: {
-    list: []
+    list: null
   },
   reducers: {
     setCollections: (state, action) => {

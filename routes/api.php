@@ -32,6 +32,7 @@ Route::prefix('/user')->group(function () {
 Route::prefix('/collections')->group(function () {
     Route::get('/', Collections\IndexController::class)->middleware('auth:sanctum');
     Route::post('/add', Collections\AddController::class)->middleware('auth:sanctum');
+    Route::get('/search', Collections\SearchController::class)->middleware('auth:sanctum');
 });
 Route::prefix('/collection')->group(function () {
     Route::put('/{collectionId}/update', Collection\UpdateController::class)->middleware('auth:sanctum');
