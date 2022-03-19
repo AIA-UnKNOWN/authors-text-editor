@@ -5,12 +5,16 @@ import camelCaseKeys from 'camelcase-keys';
 import { setNotes } from '@reducers/notesSlice';
 
 const useNotes = collectionId => {
+  const abortController = new AbortController();
   const dispatch = useDispatch();
   const [isLoading, setIsLoading] = useState(true);
   const [isShowNotes, setIsShowNotes] = useState(true);
   
   useEffect(() => {
     getNotes();
+    return () => {
+      abortController.abort();
+    }
   }, []);
 
   const getNotes = async () => {
@@ -18,7 +22,8 @@ const useNotes = collectionId => {
       headers: {
         'Content-Type': 'application/json',
         Authorization: `Bearer ${Cookies.get('token')}`
-      }
+      },
+      signal: abortController.signal
     });
     if (!response.ok) return;
     const notes = await response.json();
