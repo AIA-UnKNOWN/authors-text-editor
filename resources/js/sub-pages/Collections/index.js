@@ -18,6 +18,7 @@ const Collections = () => {
           </p>
 
           <SearchField
+            placeholder="Search a collection"
             onSearch={searchCollection}
           />
           

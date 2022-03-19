@@ -2,7 +2,7 @@ import { FaSearch } from 'react-icons/fa';
 import useSearchField from './hook';
 import Input from '@common/Input';
 
-const SearchField = ({ onSearch }) => {
+const SearchField = ({ placeholder, onSearch }) => {
   const { searchValue, setSearchValue } = useSearchField();
 
   return (
@@ -10,7 +10,7 @@ const SearchField = ({ onSearch }) => {
       className="flex bg-white p-2 border border-dark-gray rounded-md"
     >
       <Input
-        placeholder="Search a collection"
+        placeholder={placeholder}
         value={searchValue}
         onChange={e => setSearchValue(e.target.value)}
       />

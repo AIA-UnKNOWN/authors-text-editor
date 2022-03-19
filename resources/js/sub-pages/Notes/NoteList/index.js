@@ -20,6 +20,7 @@ const NoteList = ({ isLoading, notes, onOpenNote }) => {
           <div className="flex justify-center items-center py-4 mb-4 border-b border-dark-gray">
             <AddButton />
             <SearchField
+              placeholder="Search a note"
               onSearch={searchNote}
             />
           </div>
