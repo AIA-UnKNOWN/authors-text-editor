@@ -5,7 +5,7 @@ const AddButton = () => {
   const { addNote } = useAddButton();
 
   return (
-    <div className="py-4 border-b border-dark-gray mb-4">
+    <div className="mr-2">
       <button
         className="w-[40px] h-[40px] flex justify-center items-center border border-dark-gray text-[25px] text-dark-gray rounded-md"
         onClick={addNote}
