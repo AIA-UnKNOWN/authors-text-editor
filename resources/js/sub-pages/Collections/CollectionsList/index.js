@@ -4,13 +4,13 @@ import Collection from '../Collection';
 import AddButton from '../AddButton';
 import FetchLoading from '@animations/FetchLoading';
 
-const CollectionsList = ({ isLoadingSearch }) => {
+const CollectionsList = () => {
   const collections = useSelector(state => state.collections.list);
   const { isLoading } = useCollectionsList();
 
   return (
     <>
-      {(isLoadingSearch || isLoading) ? (
+      {isLoading ? (
         <FetchLoading />
       ) : collections.length > 0 ? (
         <div className="pt-4 flex flex-col flex-1">

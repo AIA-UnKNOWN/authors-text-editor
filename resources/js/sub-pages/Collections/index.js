@@ -18,9 +18,7 @@ const Collections = () => {
             onSearch={searchCollection}
           />
           
-          <CollectionsList
-            isLoadingSearch={isLoading}
-          />
+          <CollectionsList />
 
         </div>
       </div>
