@@ -17,9 +17,8 @@ const useCollections = () => {
       collections === null
     ) getCollections();
     return () => {
-      dispatch(setCollections({ list: null }));
       abortController.abort();
-    }
+    };
   }, []);
 
   const getCollections = async () => {
@@ -38,6 +37,7 @@ const useCollections = () => {
 
   const searchCollection = async (value) => {
     if (value === '') return;
+    setIsLoading(true);
     const response = await fetch(`/api/collections/search?collection=${value}`, {
       headers: {
         Accept: 'application/json',
@@ -48,6 +48,7 @@ const useCollections = () => {
     if (!response.ok) return;
     const collections = await response.json();
     dispatch(setCollections({ list: camelCaseKeys(collections) }));
+    setIsLoading(false);
   }
 
   return { getCollections, isLoading, searchCollection };

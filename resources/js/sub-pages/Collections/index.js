@@ -8,7 +8,7 @@ import FetchLoading from '@animations/FetchLoading';
 const Collections = () => {
   const collections = useSelector(state => state.collections.list);
   const { isLoading, searchCollection } = useCollections();
-
+  
   return (
     <div className="flex flex-col flex-1">
       <div className="wrapper w-full lg:w-[800px] bg-light-gray-1 flex flex-col flex-1">
