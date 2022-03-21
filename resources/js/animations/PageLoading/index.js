@@ -1,3 +1,5 @@
+import './style.css';
+
 const PageLoading = () => {
   return (
     <div className="flex flex-col flex-1 justify-center items-center mb-4 fixed h-full w-full bg-white">
