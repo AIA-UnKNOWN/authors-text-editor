@@ -1,7 +1,9 @@
+import React, { Suspense } from 'react';
 import useApp from './hook';
 import PopupNotification from '@common/PopupNotification';
-import Auth from '@pages/Auth';
-import Home from '@pages/Home';
+import PageLoading from '@animations/PageLoading';
+const Auth = React.lazy(() => import('@pages/Auth'));
+const Home = React.lazy(() => import('@pages/Home'));
 
 const App = () => {
   const { isAuthenticated } = useApp();
@@ -11,9 +13,13 @@ const App = () => {
       <PopupNotification />
 
       {isAuthenticated ? (
-        <Home />
+        <Suspense fallback={<PageLoading />}>
+          <Home />
+        </Suspense>
       ) : (
-        <Auth />
+        <Suspense fallback={<PageLoading />}>
+          <Auth />
+        </Suspense>
       )} 
     </div>
   );
