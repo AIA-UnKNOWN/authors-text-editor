@@ -1,8 +1,8 @@
 import Cookies from 'js-cookie';
-import useCollections from '../hook';
+import useCollectionsList from '../CollectionsList/hook';
 
 const useAddButton = () => {
-  const { getCollections } = useCollections();
+  const { getCollections } = useCollectionsList();
 
   const addCollection = async () => {
     const response = await fetch('/api/collections/add', {

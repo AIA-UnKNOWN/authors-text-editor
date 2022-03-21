@@ -1,12 +1,12 @@
 import { useState, useEffect } from 'react';
 import Cookies from 'js-cookie';
 import { useDispatch } from 'react-redux';
-import useCollections from '@sub-pages/Collections/hook';
+import useCollectionsList from '@sub-pages/Collections/CollectionsList/hook';
 import { showNotification } from '@reducers/notificationSlice';
 
 const useCollection = collection => {
   const dispatch = useDispatch();
-  const { getCollections } = useCollections();
+  const { getCollections } = useCollectionsList();
   const [title, setTitle] = useState('');
   const [editModeDisable, setEditModeDisable] = useState(true);
   const [buttonText, setButtonText] = useState('Save');
