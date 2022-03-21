@@ -1,12 +1,8 @@
-import { useSelector } from 'react-redux';
 import useCollections from './hook';
-import Collection from './Collection';
 import SearchField from '@common/SearchField';
-import AddButton from './AddButton';
-import FetchLoading from '@animations/FetchLoading';
+import CollectionsList from './CollectionsList';
 
 const Collections = () => {
-  const collections = useSelector(state => state.collections.list);
   const { isLoading, searchCollection } = useCollections();
   
   return (
@@ -22,24 +18,9 @@ const Collections = () => {
             onSearch={searchCollection}
           />
           
-          {isLoading ? (
-            <FetchLoading />
-          ) : collections.length > 0 ? (
-            <div className="pt-4 flex flex-col flex-1">
-              {collections.map(collection => (
-                <Collection
-                  key={collection.id}
-                  data={collection}
-                />
-              ))}
-              <AddButton />
-            </div>
-          ) : (
-            <div className="pt-4 flex flex-col flex-1 justify-center items-center">
-              <AddButton />
-              <span>You don't have any collections.</span>
-            </div>
-          )}
+          <CollectionsList
+            isLoadingSearch={isLoading}
+          />
 
         </div>
       </div>
