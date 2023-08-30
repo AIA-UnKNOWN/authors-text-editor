@@ -29,6 +29,8 @@ After installing the requirements above, follow the steps below:
     > git clone git@github.com:AIA-UnKNOWN/authors-text-editor.git
 * Go into the directory of the app by typing:
   > cd authors-text-editor
+* If your on Linux, install these additional dependencies.
+  > sudo apt install php-curl php-dom php-mysql
 * Install the dependencies of laravel using this command and wait for the installation:
   > composer update
 * After the installation is done, we need to setup the database so that we can now use it properly.
